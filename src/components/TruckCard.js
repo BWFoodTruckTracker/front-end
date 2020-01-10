@@ -11,7 +11,8 @@ import {
 import Rating from "@material-ui/lab/Rating";
 import EditIcon from "@material-ui/icons/Edit";
 import data from "../data.test";
-
+import {connect} from 'react-redux';
+import {getTrucks,updateTruck} from '../actions';
 import { Button, GridList, GridListTile } from "@material-ui/core";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 
@@ -39,6 +40,7 @@ const TruckCard = props => {
       )
       .then(response => {
         console.log(response.data, `response`);
+        props.updateTruck(response.data);
         settruckData(response.data);
         setReviews(response.data.reviews);
       });
@@ -150,10 +152,17 @@ const TruckCard = props => {
     </StyledTruckCardDiv>
   );
 };
+
 const mapStateToProps = state => {
   return {
     users: state.users,
     trucks: state.trucks
   };
 };
-export default connect(mapStateToProps, { getTrucks })(TruckCard);
+
+export default connect(
+  mapStateToProps,
+  {getTrucks,updateTruck}
+  )(TruckCard)
+
+

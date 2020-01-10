@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {connect} from 'react-redux';
 import {editTrucks} from '../actions';
-
+import {EditTrucks, FormEdit} from '../styles/editTruckStyle';
 
 const EditTruck = (props) => {
     const [editing, setEditing] = useState(false);
@@ -42,9 +42,9 @@ const EditTruck = (props) => {
         props.history.push('/home');
     };
     return(<>
-        <div className="editTruck">
-            <h2>Editing Truck (TruckName)</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <EditTrucks>
+            <h2>Editing Truck: {props.location.state.truck.name}</h2>
+            <FormEdit onSubmit={handleSubmit(onSubmit)}>
                 <label>Name: 
                     <input name="name" placeholder={props.location.state.truck.name} ref={register} /></label>
                 <label>Image: 
@@ -52,7 +52,7 @@ const EditTruck = (props) => {
                 <label>Name: 
                     <input name="cuisine"  placeholder={props.location.state.truck.cuisine} ref={register} /></label>
                 <label>Description: 
-                    <textarea name="description" ref={register}/></label>
+                    <textarea name="description" ref={register} placeholder={props.location.state.truck.description} /></label>
                 
                 {!editing && <button onClick={()=> setEditing(true)} > Edit Menu </button>}
                 {editing &&
@@ -74,10 +74,10 @@ const EditTruck = (props) => {
                 }
                 { console.log(menuItems) }
                 
-                <button>Edit</button>
-            </form>
+                <button>Save</button>
+            </FormEdit>
 
-        </div>
+        </EditTrucks>
     
     </>);
 };

@@ -14,7 +14,7 @@ import { Ul , Li, LiA, StyledLink, Leftlinks, Otherlinks} from "../styles/Header
            <Leftlinks>
             <Li>
                 <LiA>
-                <StyledLink as="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
+                <StyledLink to="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
                 </LiA>
             </Li>
            <Li>

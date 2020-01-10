@@ -81,7 +81,9 @@ const TruckWall = props => {
     axiosWithAuth()
       .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
       .then(response => {
-        props.getTrucks(response.data);
+        if (props.trucks.length < 1){
+          props.getTrucks(response.data);
+        }
         let trucks = response.data.filter(truck =>
           truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
         );

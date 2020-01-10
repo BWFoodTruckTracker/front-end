@@ -1,4 +1,4 @@
-import {GET_TRUCKS} from '../actions';
+import {GET_TRUCKS,UPDATE_TRUCK} from '../actions';
 
 const initialState = []
     
@@ -12,6 +12,20 @@ const trucksReducer = (state = initialState, action) => {
             return [
                 ...action.payload
             ];
+        case UPDATE_TRUCK:
+            return [
+                ...state.map((item,index) => {
+                    if(item.id == action.payload.id){
+                        return action.payload
+                               
+                        
+                            
+                    }else{
+                        return item;
+                    }
+                })
+
+            ]
         default:
             return state;
     }
