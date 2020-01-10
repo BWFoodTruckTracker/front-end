@@ -13,7 +13,7 @@ import { Ul , Li, LiA, StyledLink} from "../styles/HeaderStyles"
 
             <Li>
                 <LiA>
-                <StyledLink as="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
+                <StyledLink to="a" href="https://bwfoodtrucktracker.github.io/marketing-ui/">Marketing Page</StyledLink>
                 </LiA>
             </Li>
 

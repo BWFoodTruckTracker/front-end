@@ -21,7 +21,7 @@ const TruckWall = (props) => {
   const [searchName, setSearchName] = useState(``);
   const [searchfilter, setSearchFilter] = useState([]);
 
-  const context = useContext(TruckCard);
+ 
 
   const MAX_LENGTH = 250;
 
@@ -83,7 +83,9 @@ const TruckWall = (props) => {
     axiosWithAuth()
       .get(`https://lambda-food-truck.herokuapp.com/api/trucks `)
       .then(response => {
-        props.getTrucks(response.data);
+        if (props.trucks.length < 1){
+          props.getTrucks(response.data);
+        }
         let trucks = response.data.filter(truck =>
           truck.cuisine.toLowerCase().includes(searchName.toLowerCase().trim())
         );
